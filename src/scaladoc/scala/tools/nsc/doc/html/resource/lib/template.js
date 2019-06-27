@@ -245,9 +245,11 @@ $(document).ready(function() {
         }
     };
 
-    $("#template li[fullComment=yes]").click(function() {
-        var sel = window.getSelection().toString();
-        if (!sel) commentToggleFct($(this));
+    $("#template li[fullComment=yes]").click(function(ev) {
+        if ($(ev.target).closest("div.fullcomment").length > 0) {
+           return;
+        }
+        commentToggleFct($(this));
     });
 
     /* Linear super types and known subclasses */
